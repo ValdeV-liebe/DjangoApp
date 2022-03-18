@@ -1,0 +1,60 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form action = " {% url 'artist' %} " method = "POST">
+    {% csrf_token %}
+
+    {% if messages %}
+        <ul class ="messages">
+            {% for message in messages %}
+                <li>
+                    {% if message.tags %} class =" {{message.tags}} "{% endif %}
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{form}}
+    <button type = "submit">Enregistrer</button>
+</form>
+
+    {% comment %} {% for album in page_obj  %}
+    <div class="col-sm-4 text-center">
+        <a href="{% url 'detail' album_id=album.id %}">
+          <img class="img-responsive" src="{{ album.image.url }}" alt="{{ album.title }}">
+        </a>
+        <h3><a href="{% url 'detail' album_id=album.id %}">{{ album.title | upper }}</a></h3>
+        
+    </div>
+    {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}
+
+    {% endfor %}
+
+    <div class = "pagination">
+        <span class = "step-links">
+            {% if page_obj.has_previous %}
+            
+            <a href = "?page=1">&laquo; first </a>
+            <a href = "?page= {{ page_obj.previous_page_number }}"> previous </a>
+            
+            {% endif %}
+
+            <span class = "current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+            
+            <a href = "?page={{ page_obj.next_page_number }}"> next </a>
+            <a href = "?page={{ page_obj.paginator.num_pages }}"> last &raquo;</>
+            
+            {% endif %}
+
+        </span>
+    </div> {% endcomment %}
+
+{% endblock content %}
+

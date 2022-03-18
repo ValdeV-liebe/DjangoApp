@@ -1,0 +1,27 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  {% include 'store/search_form.html' %}
+  
+  {% for album in albums %}
+      <div class = "col-sm-4 text-center">
+        <a href =" {% url 'detail' album.id %} ">
+          <img class = "img-responsive" src = "{{ album.image.url }}">
+        </a>
+        <h3><a href = " {% url 'detail' album.id %} "> {{ album.title }} </a> </h3>
+        {% for artist in album.artists.all %}
+          <p> {{ artist.name }} </p>
+        {% endfor %}
+      </div>
+      {% if forloop.counter|divisibleby:3 %}
+        <div class = " clearfix "></div>
+      {% endif %}
+    {% endfor %}
+  
+
+{% endblock %}
+
+
+    
