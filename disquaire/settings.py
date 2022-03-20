@@ -83,24 +83,24 @@ WSGI_APPLICATION = 'disquaire.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
     'default' : {
         'ENGINE': 'django.db.backends.postgresql',
          'NAME': 'disquaire',
          'USER': 'postgres',
          'PASSWORD': '',
          'HOST': '',
-         'PORT' : '5432'
+         'PORT' : '5433'
     }
-}"""
+}
 #postgrespassword
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+}"""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
